@@ -1,0 +1,35 @@
+SELECT COUNT(numtest) FROM Test;
+
+SELECT Notation.score, Student.name, Student.firstname FROM Notation INNER JOIN Student ON Notation.numstud = Student.numstud;
+
+
+SELECT Notation.score, Student.name, Student.firstname FROM Notation 
+INNER JOIN Student ON Notation.numstud = Student.numstud
+INNER JOIN Test ON Notation.numtest = Test.numtest;
+
+SELECT Notation.score FROM Notation WHERE score >= 10;
+
+SELECT Student.name, Student.firstname FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.score >= 20;
+
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=1;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=2;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=3;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=4;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=5;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=6;
+SELECT Student.name, Student.firstname, AVG(Notation.score) FROM Student INNER JOIN Notation ON Student.numstud = Notation.numstud WHERE Notation.numstud=7;
+
+
+SELECT Student.name, Student.firstname, AVG(score) FROM Notation FULL JOIN Student ON Notation.numstud = Student.numstud;
+
+SELECT Test.testdate FROM Test WHERE testdate BETWEEN '2014-01-01' AND '2014-06-30';
+
+SELECT * FROM Test;
+
+SELECT Student.name, Student.firstname AVG(score) FROM Notation INNER JOIN Student ON Notation.numstud = Student.numstud ORDER BY score ASC;
+
+Average scores for matter (indicate the wording) comprising more than one test (4 points)
+
+SELECT AVG(Notation.score), Matter.wording FROM Notation INNER JOIN Test ON Notation.testnum = Test.testnum FROM Matter INNER JOIN Test ON Matter.codemat = Test.codemat WHERE COUNT(Test.codemat) > 1;
+
+SELECT Notation AVG(score), Notation.numtest FROM Notation WHERE COUNT(numtest) < 6;

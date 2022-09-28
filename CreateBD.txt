@@ -1,0 +1,44 @@
+CREATE DATABASE db;
+USE db;
+
+CREATE TABLE Student (
+	numstud INT NOT NULL AUTO_INCREMENT,
+	name char(255) NOT NULL,
+	firstname char(255) NOT NULL,
+	dateofbirth DATE NOT NULL,
+	street char(255) NOT NULL,
+	postalcod char(255) NOT NULL,
+	city char(255) NOT NULL,
+	PRIMARY KEY (numstud)
+);
+
+CREATE TABLE Matter (
+	codemat char(255) NOT NULL,
+	wording char(255) NOT NULL,
+	coef FLOAT NOT NULL,
+	PRIMARY KEY (codemat)
+);
+
+CREATE TABLE Test (
+	numtest INT NOT NULL AUTO_INCREMENT,
+	testdate DATE NOT NULL,
+	place char(255) NOT NULL,
+	codemat char(255) NOT NULL,
+	PRIMARY KEY (numtest)
+);
+
+CREATE TABLE Notation (
+	score FLOAT NOT NULL,
+	numstud INT NOT NULL,
+	numtest INT NOT NULL
+);
+
+ALTER TABLE Test ADD FOREIGN KEY (codemat) REFERENCES Matter(codemat);
+
+ALTER TABLE Notation ADD FOREIGN KEY (numstud) REFERENCES Student(numstud);
+
+ALTER TABLE Notation ADD FOREIGN KEY (numtest) REFERENCES Test(numtest);
+
+
+
+

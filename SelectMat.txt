@@ -1,0 +1,3 @@
+SELECT Matter.wording, Matter.coef FROM Matter;
+
+SELECT SUM(coef) FROM Matter;
